@@ -19,10 +19,12 @@ const YourProducts = () => {
         selector.map((item, index) => {
           return (
             <ProductCard
-              key={index}
-              imgsrc={item.image}
-              title={item.title}
-              id={item.id}
+            key={index}
+            index={index}
+            imgsrc={item.image}
+            title={item.title}
+            id={item.id}
+            del={true}
             />
           );
         })

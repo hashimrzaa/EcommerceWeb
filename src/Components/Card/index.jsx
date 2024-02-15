@@ -6,10 +6,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { addcard } from "../../Redux/Slices";
+import { useDispatch } from "react-redux";
+import { addcard, removecard } from "../../Redux/Slices";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 export default function ProductCard({
+  index,  
   imgsrc,
   title,
   w = false,
@@ -17,9 +19,9 @@ export default function ProductCard({
   id,
   detail = false,
   desc,
+  del = false,
 }) {
   const dispatch = useDispatch();
-
   const addCard1 = (id) => {
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then((res) => res.json())
@@ -30,6 +32,14 @@ export default function ProductCard({
           })
         );
       });
+  };
+
+  const removeCard = (id) => {
+    dispatch(
+      removecard({
+        index: id,
+      })
+    );
   };
   const navigate = useNavigate();
   return (
@@ -77,6 +87,11 @@ export default function ProductCard({
                 Add To cart
               </Button>
             </div>
+          ) : null}
+          {del ? (
+            <Button variant="outlined" size="small" onClick={() => {removeCard(index)}}>
+              <DeleteOutlineIcon />
+            </Button>
           ) : null}
         </CardActions>
       </CardContent>
