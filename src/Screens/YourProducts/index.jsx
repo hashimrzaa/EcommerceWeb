@@ -27,7 +27,9 @@ const YourProducts = () => {
           );
         })
       ) : (
-        <div style={{position:'absolute',top:'45%',left:'45%'}}>You don't Add to Cart any Item</div>
+        <div style={{ display: "flex", fontSize: "25px", marginTop: "40vh" }}>
+          No Item Found
+        </div>
       )}
     </div>
   );

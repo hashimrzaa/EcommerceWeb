@@ -67,7 +67,11 @@ function DrawerAppBar(props) {
                 <ListItemText
                   primary={
                     index === 2
-                      ? "your" + <LocalGroceryStoreOutlinedIcon />
+                      ? [
+                          "Your's",
+                          <LocalGroceryStoreOutlinedIcon key={index} />,
+                          selector.length > 0 ? selector.length : null,
+                        ]
                       : item
                   }
                 />
